@@ -20,11 +20,16 @@ async function default_1(table, condetions, values) {
         if (!values)
             reject('"values" param is required.');
         const condetion = (0, getCondetion_1.default)(condetions);
+        let oldValues = await Class.select(table, condetions);
         let newRows = new Array();
         for (const [key, value] of Object.entries(values)) {
             newRows.push(`${key}=${(0, convertSQLValues_1.default)(value)}`);
         }
-        const oldValues = await Class.select(table, condetions);
+        for (const [key, value] of Object.entries(values)) {
+            //@ts-ignore
+            if (condetions[key])
+                condetions[key] = value;
+        }
         Class.db?.query(`UPDATE ${table} SET ${newRows.join(",")} WHERE ${condetion}`, async (err) => {
             if (err)
                 reject(err);

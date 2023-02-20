@@ -14,11 +14,15 @@ export default async function (table: string, condetions: {}, values: {}) {
     if (!condetions) reject('"condetions" param is required.');
     if (!values) reject('"values" param is required.');
     const condetion = getCondetion(condetions);
+    let oldValues = await Class.select(table, condetions);
     let newRows = new Array();
     for (const [key, value] of Object.entries<any>(values)) {
       newRows.push(`${key}=${CSV(value)}`);
     }
-    const oldValues = await Class.select(table, condetions);
+    for (const [key, value] of Object.entries<any>(values)) {
+      //@ts-ignore
+      if (condetions[key]) condetions[key] = value;
+    }
     Class.db?.query(
       `UPDATE ${table} SET ${newRows.join(",")} WHERE ${condetion}`,
       async (err: any) => {
