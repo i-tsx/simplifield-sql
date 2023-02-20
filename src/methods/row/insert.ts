@@ -27,7 +27,7 @@ export default async function (table: string, values: {}) {
         if (err) reject(err);
         else {
           resolve(RESULT);
-          Class.emit("insertRow", RESULT);
+          Class.emit("insertRow", table,RESULT);
         }
       }
     );

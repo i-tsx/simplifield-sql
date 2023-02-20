@@ -31,7 +31,7 @@ async function default_1(table, values) {
                 reject(err);
             else {
                 resolve(RESULT);
-                Class.emit("insertRow", RESULT);
+                Class.emit("insertRow", table, RESULT);
             }
         });
     });

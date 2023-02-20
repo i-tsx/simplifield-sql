@@ -18,15 +18,15 @@ export default async function (table: string, condetions: {}, values: {}) {
     for (const [key, value] of Object.entries<any>(values)) {
       newRows.push(`${key}=${CSV(value)}`);
     }
-    const oldData = await Class.select(table, condetions);
+    const oldValues = await Class.select(table, condetions);
     Class.db?.query(
       `UPDATE ${table} SET ${newRows.join(",")} WHERE ${condetion}`,
       async (err: any) => {
         if (err) reject(err);
         else {
-          let newData = await Class.findRow(table, condetions);
-          resolve(newData);
-          Class.emit("updateRow", oldData, newData);
+          let newValues = await Class.findRow(table, condetions);
+          resolve(newValues);
+          Class.emit("updateRow", table, oldValues, newValues);
         }
       }
     );

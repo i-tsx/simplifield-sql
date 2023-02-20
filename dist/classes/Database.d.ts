@@ -1,7 +1,11 @@
 declare global {
     namespace NodeJS {
         interface EventEmitter {
-            on(eventName: "connect" | "disconnect" | "insertRow" | "updateRow" | "deleteRow", listener: (...args: any[]) => void): this;
+            on(eventName: "connect", listener: (connection: any) => void): this;
+            on(eventName: "disconnect", listener: (connection: any) => void): this;
+            on(eventName: "insertRow", listener: (table: string, values: any) => void): this;
+            on(eventName: "updateRow", listener: (table: string, oldValues: any, newValues: any) => void): this;
+            on(eventName: "deleteRow", listener: (table: string, values: any, deleted: boolean) => void): this;
         }
     }
 }
