@@ -1,6 +1,6 @@
 {
   "name": "simplifield-sql",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "A simplifield sql package that makes your work more easier, simpler and smarter!.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
