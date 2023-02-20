@@ -5,6 +5,7 @@
 
 export default async function () {
   this.connection.destroy();
+  this.db.end();
   this.connections.delete("default");
   this.emit("disconnect", this.connection);
 }
