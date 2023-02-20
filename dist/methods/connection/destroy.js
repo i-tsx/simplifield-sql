@@ -6,6 +6,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 async function default_1() {
     this.connection.destroy();
+    this.db.end();
     this.connections.delete("default");
     this.emit("disconnect", this.connection);
 }
