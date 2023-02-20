@@ -29,7 +29,7 @@ async function default_1(table, condetions, values) {
             if (err)
                 reject(err);
             else {
-                let newValues = await Class.findRow(table, condetions);
+                let newValues = await Class.select(table, condetions);
                 resolve(newValues);
                 Class.emit("updateRow", table, oldValues, newValues);
             }

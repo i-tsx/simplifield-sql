@@ -24,7 +24,7 @@ export default async function (table: string, condetions: {}, values: {}) {
       async (err: any) => {
         if (err) reject(err);
         else {
-          let newValues = await Class.findRow(table, condetions);
+          let newValues = await Class.select(table, condetions);
           resolve(newValues);
           Class.emit("updateRow", table, oldValues, newValues);
         }
