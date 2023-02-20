@@ -12,7 +12,7 @@ const getCondetion_1 = __importDefault(require("../../utils/getCondetion"));
  */
 async function default_1(table, condetions, values) {
     const Class = this;
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
         if (!table)
             reject('"table" param is required.');
         if (!condetions)
@@ -24,13 +24,14 @@ async function default_1(table, condetions, values) {
         for (const [key, value] of Object.entries(values)) {
             newRows.push(`${key}=${(0, convertSQLValues_1.default)(value)}`);
         }
+        const oldData = await Class.select(table, condetions);
         Class.db?.query(`UPDATE ${table} SET ${newRows.join(",")} WHERE ${condetion}`, async (err) => {
             if (err)
                 reject(err);
             else {
                 let newData = await Class.findRow(table, condetions);
                 resolve(newData);
-                Class.emit("updateRow", newData);
+                Class.emit("updateRow", oldData, newData);
             }
         });
     });

@@ -9,7 +9,7 @@ import getCondetion from "../../utils/getCondetion";
 
 export default async function (table: string, condetions: {}, values: {}) {
   const Class = this;
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     if (!table) reject('"table" param is required.');
     if (!condetions) reject('"condetions" param is required.');
     if (!values) reject('"values" param is required.');
@@ -18,6 +18,7 @@ export default async function (table: string, condetions: {}, values: {}) {
     for (const [key, value] of Object.entries<any>(values)) {
       newRows.push(`${key}=${CSV(value)}`);
     }
+    const oldData = await Class.select(table, condetions);
     Class.db?.query(
       `UPDATE ${table} SET ${newRows.join(",")} WHERE ${condetion}`,
       async (err: any) => {
@@ -25,7 +26,7 @@ export default async function (table: string, condetions: {}, values: {}) {
         else {
           let newData = await Class.findRow(table, condetions);
           resolve(newData);
-          Class.emit("updateRow", newData);
+          Class.emit("updateRow", oldData, newData);
         }
       }
     );
