@@ -17,7 +17,6 @@ export default async function (table: string, condetions = {}) {
         if (err) reject(err);
         else {
           let res = result[0];
-          console.log(result);
           if (!res) return resolve(null);
           let entriesResult = [];
           for (let [key, value] of Object.entries<any>(res)) {

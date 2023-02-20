@@ -20,7 +20,6 @@ async function default_1(table, condetions = {}) {
                 reject(err);
             else {
                 let res = result[0];
-                console.log(result);
                 if (!res)
                     return resolve(null);
                 let entriesResult = [];
