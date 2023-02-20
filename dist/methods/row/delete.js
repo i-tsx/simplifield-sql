@@ -25,7 +25,7 @@ async function default_1(table, condetions) {
                 resolve(false);
             else {
                 resolve(true);
-                Class.emit("deleteeRow", table, { ...old, deleted: true });
+                Class.emit("deleteRow", table, { ...old, deleted: true });
             }
         });
     });

@@ -21,7 +21,7 @@ export default async function (table: string, condetions: {} | undefined) {
         else if (result.affectedRows === 0) resolve(false);
         else {
           resolve(true);
-          Class.emit("deleteeRow", table,{ ...old, deleted: true });
+          Class.emit("deleteRow", table, { ...old, deleted: true });
         }
       }
     );
