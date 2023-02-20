@@ -13,7 +13,7 @@ declare global {
       ): this;
       on(
         eventName: "deleteRow",
-        listener: (table: string, values: any, deleted: boolean) => void
+        listener: (table: string, values: any) => void
       ): this;
     }
   }

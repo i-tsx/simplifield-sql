@@ -5,7 +5,7 @@ declare global {
             on(eventName: "disconnect", listener: (connection: any) => void): this;
             on(eventName: "insertRow", listener: (table: string, values: any) => void): this;
             on(eventName: "updateRow", listener: (table: string, oldValues: any, newValues: any) => void): this;
-            on(eventName: "deleteRow", listener: (table: string, values: any, deleted: boolean) => void): this;
+            on(eventName: "deleteRow", listener: (table: string, values: any) => void): this;
         }
     }
 }
