@@ -42,12 +42,12 @@ class Database extends EventEmitter {
         Class.db.getConnection((err: any, connection: mysql.PoolConnection) => {
           if (err) throw new TypeError(`Connection Error: ${err}`);
           Class.connection = connection;
-          Class.emit("connect", Class.connection);
           connections.set("default", {
             options,
             db: Class.db,
             connection: Class.connection,
           });
+          Class.emit("connect", Class.connection);
         });
       }
       return Class;
