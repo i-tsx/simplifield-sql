@@ -1,0 +1,20 @@
+declare const _default: {
+    table: (received: any) => string;
+    key: (received: any) => string;
+    value: (received: any) => string;
+    number: (received: any) => string;
+    numberType: (received: any) => string;
+    query: (received: any) => string;
+    array: (key: any) => string;
+    notNumber: (key: any) => string;
+    dataNotFound: (key: any) => string;
+    tableNotFound: (table: any) => string;
+    tableAlreadyExists: (table: any) => string;
+    targetNotObject: (key: any) => string;
+    variables: (received: any) => string;
+    variablesNotObject: (received: any) => string;
+    connectionError: (received: any) => string;
+    noTablesExisted: string;
+    tableRenameSameName: string;
+};
+export default _default;
