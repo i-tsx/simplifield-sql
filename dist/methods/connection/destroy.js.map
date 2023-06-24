@@ -1,1 +1,0 @@
-{"version":3,"file":"destroy.js","sourceRoot":"","sources":["../../../src/methods/connection/destroy.ts"],"names":[],"mappings":";AAAA;;;GAGG;;AAEY,KAAK;IAClB,IAAI,CAAC,UAAU,CAAC,OAAO,EAAE,CAAC;IAC1B,IAAI,CAAC,EAAE,CAAC,GAAG,EAAE,CAAC;IACd,IAAI,CAAC,WAAW,CAAC,MAAM,CAAC,SAAS,CAAC,CAAC;IACnC,IAAI,CAAC,IAAI,CAAC,YAAY,EAAE,IAAI,CAAC,UAAU,CAAC,CAAC;AAC3C,CAAC;AALD,4BAKC"}
